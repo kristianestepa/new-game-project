@@ -16,6 +16,7 @@ In this game, the player controls a character who must interact with a box to se
 ## 🛠️ Current Status & Learning Goals
 * [x] Initialize Godot project structure and Git tracking
 * [ ] Implement 2D character movement controller
+* [ ] Create level level environment and collisions
 * [ ] Create box interaction logic & UI prompt system
 * [ ] Implement point counter and 30-second timer loop
 
