@@ -114,15 +114,13 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Player" type="Node2D" unique_id=1820412260]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1942669800]
 script = ExtResource("1_g2els")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1979448542]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1411643957]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1411643957]
 shape = SubResource("RectangleShape2D_3vyb7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1752165788]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1752165788]
 sprite_frames = SubResource("SpriteFrames_qlg0r")
 animation = &"walk_down"
 autoplay = "idle"

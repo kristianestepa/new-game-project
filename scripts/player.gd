@@ -1,10 +1,10 @@
-extends Node2D
+extends CharacterBody2D
 
-# Exposes the speed vairable to the Godot Inspector panel
+# Exposes the speed variable to the Godot Inspector panel
 @export var speed: float = 100.0
 
-# Get a reference to the AnimatedSprite2D child node so we can control it
-@onready var animated_sprite: AnimatedSprite2D = $CharacterBody2D/AnimatedSprite2D
+# Since CharacterBody2D is now the root, AnimatedSprite2D is a direct child!
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta):
 	
@@ -22,13 +22,16 @@ func _physics_process(delta):
 		input_direction.y -= 1
 		
 	# Normalize the vector so moving diagonally doesn't make you faster
-	# This keeps the maximum length of the vector at 1.0
 	input_direction = input_direction.normalized()
 	
-	# Apply the final movement to your position all at once
-	position += input_direction * speed * delta
+	# --- COLLISION UPGRADE ---
+	# Instead of changing 'position' directly, CharacterBody2D uses 'velocity'
+	velocity = input_direction * speed
 	
-# Check if the player is moving or standing still to switch animations
+	# move_and_slide() moves the character and automatically stops them when hitting walls
+	move_and_slide()
+	
+	# Check if the player is moving or standing still to switch animations
 	if input_direction != Vector2.ZERO:
 		# If moving horizontally
 		if input_direction.x != 0:
@@ -43,5 +46,5 @@ func _physics_process(delta):
 		elif input_direction.y < 0:
 			animated_sprite.play("walk_up")
 	else:
-		# If standing still (lined up with the main 'if input_direction != Vector2.ZERO:')
+		# If standing still
 		animated_sprite.play("idle")
