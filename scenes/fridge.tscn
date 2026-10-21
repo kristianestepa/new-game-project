@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dodgmg2j0jn1q" path="res://assets/sprites/House-kitchen-Sheet2.png" id="1_3inec"]
 [ext_resource type="Script" uid="uid://d2h58w71v0hog" path="res://scripts/fridge.gd" id="1_ks2v0"]
 [ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="3_buvrw"]
+[ext_resource type="PackedScene" uid="uid://dhn4bxbecai35" path="res://scenes/loot_popup.tscn" id="4_husjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_on5l8"]
 size = Vector2(16, 4)
@@ -44,6 +45,12 @@ theme_override_fonts/font = ExtResource("3_buvrw")
 theme_override_font_sizes/font_size = 8
 text = "Press Space"
 horizontal_alignment = 1
+
+[node name="LootPopup" parent="." unique_id=770001655 instance=ExtResource("4_husjh")]
+offset_left = 12.0
+offset_top = -19.0
+offset_right = 68.0
+offset_bottom = 13.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,17 +1,15 @@
 extends CharacterBody2D
 
-# Exposes the speed variable to the Godot Inspector panel
 @export var speed: float = 100.0
-
-# Since CharacterBody2D is now the root, AnimatedSprite2D is a direct child!
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+# Keep track of which way the player is facing (defaults to "down")
+var facing_direction: String = "down"
 
 func _physics_process(delta):
 	
-	# Create a blank 2D vector (0, 0) to track movement direction
 	var input_direction = Vector2.ZERO
 	
-	# Check inputs and adjust the vector components
 	if Input.is_action_pressed("ui_right"):
 		input_direction.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -21,30 +19,44 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_up"):
 		input_direction.y -= 1
 		
-	# Normalize the vector so moving diagonally doesn't make you faster
 	input_direction = input_direction.normalized()
 	
-	# --- COLLISION UPGRADE ---
-	# Instead of changing 'position' directly, CharacterBody2D uses 'velocity'
 	velocity = input_direction * speed
-	
-	# move_and_slide() moves the character and automatically stops them when hitting walls
 	move_and_slide()
 	
-	# Check if the player is moving or standing still to switch animations
+	# --- ANIMATION & DIRECTION TRACKING ---
 	if input_direction != Vector2.ZERO:
 		# If moving horizontally
 		if input_direction.x != 0:
 			animated_sprite.play("walk_left")
 			if input_direction.x < 0:
-				animated_sprite.flip_h = false # Face left
+				facing_direction = "left"  # Remember we are facing left
+				animated_sprite.flip_h = false 
 			else:
-				animated_sprite.flip_h = true # Face right
-		# If moving vertically
+				facing_direction = "right" # Remember we are facing right
+				animated_sprite.flip_h = true 
+				
+		# If moving vertically down
 		elif input_direction.y > 0:
+			facing_direction = "down"      # Remember we are facing down
 			animated_sprite.play("walk_down")
+			animated_sprite.flip_h = false
+			
+		# If moving vertically up
 		elif input_direction.y < 0:
+			facing_direction = "up"        # Remember we are facing up
 			animated_sprite.play("walk_up")
+			animated_sprite.flip_h = false
+			
 	else:
-		# If standing still
-		animated_sprite.play("idle")
+		# When standing still, play the idle animation that matches our last facing direction!
+		# (Assumes your idle animations are named: idle_down, idle_left, idle_up, etc.)
+		
+		# Note: If you use walk_left flipped for right, you can map "right" to use "idle_left" with flip_h = true, 
+		# or make an explicit "idle_right" animation. Here is a safe way using your named animations:
+		if facing_direction == "right":
+			animated_sprite.play("idle_left")
+			animated_sprite.flip_h = true
+		else:
+			animated_sprite.play("idle_" + facing_direction)
+			animated_sprite.flip_h = false

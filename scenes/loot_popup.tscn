@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dhn4bxbecai35"]
+
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="1_aq0fq"]
+
+[node name="LootPopup" type="PanelContainer" unique_id=770001655]
+visible = false
+offset_right = 112.0
+offset_bottom = 56.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=883862299]
+layout_mode = 2
+
+[node name="Apple" type="Label" parent="VBoxContainer" unique_id=858232628]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aq0fq")
+theme_override_font_sizes/font_size = 8
+text = "1. Apple"
+
+[node name="Milk" type="Label" parent="VBoxContainer" unique_id=1138913053]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aq0fq")
+theme_override_font_sizes/font_size = 8
+text = "2. Milk"
+
+[node name="Potato" type="Label" parent="VBoxContainer" unique_id=1026338819]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aq0fq")
+theme_override_font_sizes/font_size = 8
+text = "3. Potato"
