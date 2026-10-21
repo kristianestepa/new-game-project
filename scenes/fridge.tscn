@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c11uqyip5egpj"]
+
+[ext_resource type="Texture2D" uid="uid://dodgmg2j0jn1q" path="res://assets/sprites/House-kitchen-Sheet2.png" id="1_3inec"]
+[ext_resource type="Script" uid="uid://d2h58w71v0hog" path="res://scripts/fridge.gd" id="1_ks2v0"]
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="3_buvrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on5l8"]
+size = Vector2(16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3inec"]
+size = Vector2(20, 8)
+
+[node name="Fridge" type="StaticBody2D" unique_id=1898600748]
+script = ExtResource("1_ks2v0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1380439039]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_on5l8")
+
+[node name="ClosedSprite" type="Sprite2D" parent="." unique_id=415475834]
+texture = ExtResource("1_3inec")
+region_enabled = true
+region_rect = Rect2(0.78926086, 1.2460213, 20.34832, 30.881565)
+
+[node name="OpenSprite" type="Sprite2D" parent="." unique_id=1455046222]
+visible = false
+position = Vector2(2, -1)
+texture = ExtResource("1_3inec")
+region_enabled = true
+region_rect = Rect2(94.96541, -1.6384048, 28.288345, 34.412086)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2055710541]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2052212946]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_3inec")
+
+[node name="Label" type="Label" parent="." unique_id=46362211]
+offset_left = -36.0
+offset_top = -31.0
+offset_right = 38.0
+offset_bottom = -22.0
+theme_override_fonts/font = ExtResource("3_buvrw")
+theme_override_font_sizes/font_size = 8
+text = "Press Space"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

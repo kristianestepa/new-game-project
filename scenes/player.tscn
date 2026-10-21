@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
-[ext_resource type="Texture2D" uid="uid://b1moig162k5aq" path="res://assets/Chef Idle1-Sheet.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://b1moig162k5aq" path="res://assets/sprites/Chef Idle1-Sheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cwqmrrjai1glx" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://jf061ikudqoo" path="res://assets/Chef sheet.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://jf061ikudqoo" path="res://assets/sprites/Chef sheet.png" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(20, 32)
@@ -122,5 +122,5 @@ shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1752165788]
 sprite_frames = SubResource("SpriteFrames_qlg0r")
-animation = &"walk_down"
+animation = &"idle"
 autoplay = "idle"
