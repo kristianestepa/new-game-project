@@ -3,10 +3,13 @@ extends CharacterBody2D
 @export var speed: float = 100.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+# Tracks what the player is currently holding
+var held_item: String = ""
+
 # Keep track of which way the player is facing (defaults to "down")
 var facing_direction: String = "down"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	var input_direction = Vector2.ZERO
 	
@@ -60,3 +63,13 @@ func _physics_process(delta):
 		else:
 			animated_sprite.play("idle_" + facing_direction)
 			animated_sprite.flip_h = false
+
+# Function to give an item to the player
+func receive_item(item_name: String):
+	held_item = item_name
+	print("Player is now holding: ", held_item)
+	
+	# Find the HUD label in the main scene and update its text
+	var hud_label = get_node_or_null("/root/Game/HUDLabel")
+	if hud_label:
+		hud_label.text = "Holding: " + held_item

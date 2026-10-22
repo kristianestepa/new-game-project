@@ -1,29 +1,35 @@
 [gd_scene format=3 uid="uid://dhn4bxbecai35"]
 
+[ext_resource type="Script" uid="uid://c0v5abrhod40w" path="res://scripts/loot_popup.gd" id="1_8wcw7"]
 [ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="1_aq0fq"]
 
 [node name="LootPopup" type="PanelContainer" unique_id=770001655]
 visible = false
 offset_right = 112.0
 offset_bottom = 56.0
+script = ExtResource("1_8wcw7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=883862299]
 layout_mode = 2
 
-[node name="Apple" type="Label" parent="VBoxContainer" unique_id=858232628]
+[node name="Apple" type="Button" parent="VBoxContainer" unique_id=16299407]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aq0fq")
 theme_override_font_sizes/font_size = 8
 text = "1. Apple"
 
-[node name="Milk" type="Label" parent="VBoxContainer" unique_id=1138913053]
+[node name="Milk" type="Button" parent="VBoxContainer" unique_id=1819421036]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aq0fq")
 theme_override_font_sizes/font_size = 8
 text = "2. Milk"
 
-[node name="Potato" type="Label" parent="VBoxContainer" unique_id=1026338819]
+[node name="Potato" type="Button" parent="VBoxContainer" unique_id=150976901]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aq0fq")
 theme_override_font_sizes/font_size = 8
 text = "3. Potato"
+
+[connection signal="pressed" from="VBoxContainer/Apple" to="." method="_on_apple_pressed"]
+[connection signal="pressed" from="VBoxContainer/Milk" to="." method="_on_milk_pressed"]
+[connection signal="pressed" from="VBoxContainer/Potato" to="." method="_on_potato_pressed"]

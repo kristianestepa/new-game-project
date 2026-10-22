@@ -88,7 +88,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_dqkch")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle_down",
 "speed": 3.0
 }, {
 "frames": [{
@@ -167,6 +167,5 @@ shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1752165788]
 sprite_frames = SubResource("SpriteFrames_qlg0r")
-animation = &"idle_up"
-autoplay = "idle"
-frame_progress = 0.90822
+animation = &"idle_down"
+autoplay = "idle_down"

@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://elst0xn32iil"]
 
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://c11uqyip5egpj" path="res://scenes/fridge.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Node2D" unique_id=357846549]
+
+[node name="HUDLabel" type="Label" parent="." unique_id=153439796]
+offset_left = -137.0
+offset_top = 53.0
+offset_right = -97.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("1_lnu2h")
+theme_override_font_sizes/font_size = 8
 
 [node name="Box" parent="." unique_id=1898600748 instance=ExtResource("2_yqjtg")]
 position = Vector2(-88, 1)
